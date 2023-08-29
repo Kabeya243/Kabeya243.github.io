@@ -1,0 +1,12 @@
+{
+  "name": "sass",
+  "description": "Je suis un développeur web frontend passionné par la création de designs et d'interfaces utilisateurs élégants et performants.<br>Toujours prêt a relever  des nouveaux défis!",
+  "version": "1.0.0",
+  "main": "script.js",
+  "devDependencies": {},
+  "scripts": {
+    "sass":"sass --watch ./styles/style.scss:./styles/style.css"
+  },
+  "author": "kabeya ilunga",
+  "license": "ISC"
+}
