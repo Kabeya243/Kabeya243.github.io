@@ -521,7 +521,7 @@ footer{
             font-family: signature;
             font-size: 7em;
             font-weight: 400;
-            color: rgb(255, 0, 0);
+            color: rgb(255, 255, 255);
             margin-top: -20px;
         }
     }
@@ -733,6 +733,17 @@ footer{
 }
 
 @media screen and (max-width:500px){
+    header{
+       .head{
+        .left{
+            .desc{
+                h2{
+                    font-size: 1.1em;
+                }
+            }
+        }
+       }
+    }
     section#portfolio{
         .works{
             grid-template-columns: repeat(auto-fit,95%);
@@ -745,6 +756,54 @@ footer{
                         font-size: 1.5em;
                     }
                 }
+            }
+        }
+    }
+}
+@media screen and (max-width:480px) {
+    header{
+        .head{
+            width: 100%;
+            .left{
+                width: 100%;
+                margin: 0;
+                .desc{
+                    width: 100%;
+                    h1{
+                        font-size: 2.1em;
+                    }
+                    h2{
+                        margin-top: 20px;
+                    }
+                    p{
+                        width: 300px;
+                        margin-top: 20px;
+                    }
+                }
+                .social{
+                    width: 80%;
+                    a{
+                        margin: 0;
+                        .bx{
+                            font-size: 1.1em;
+                            margin-left: -7px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    footer{
+        .top{
+            text-align: center;
+            h1{
+                font-size: 5em;
+                margin-top: 10px;
+            }
+        }
+        .foot{
+            p{
+                font-size: 15px;
             }
         }
     }
