@@ -17,12 +17,12 @@ const works = [
         desc: `Present your products online with elegance through our uniquely designed website, establishing a professional brand image!`,
         link: "https://velover.vercel.app/",
     },
-    {
-        title: "Cafeo's Love",
-        img: "./libs/img/cafeo.png",
-        desc: `Explore our raw and captivating website design, tailored for an authentic café business made in Africa!`,
-        link: "https://cafeos.vercel.app/",
-    },
+    // {
+    //     title: "Cafeo's Love",
+    //     img: "./libs/img/cafeo.png",
+    //     desc: `Explore our raw and captivating website design, tailored for an authentic café business made in Africa!`,
+    //     link: "https://cafeos.vercel.app/",
+    // },
     {
         title: "Elixir Wine",
         img: "./libs/img/elixir.png",
