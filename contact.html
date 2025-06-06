@@ -116,39 +116,30 @@
 				<div class="contact-row">
 					<div class="left">
 <!-- 						formulaire ajoute  -->
-						<form id="contact-form" method="POST" action="mail.php">
-	<!-- Hidden Required Fields -->
-	<input type="hidden" name="project_name" value="kabeyailunga">
-	<input type="hidden" name="admin_email" value="studio@kabeyailunga.com">
-	<input type="hidden" name="email_from" value="noreply@kabeyailunga.com">
-	<input type="hidden" name="form_subject" value="New email from the site kabeya ilunga">
-	<!-- END Hidden Required Fields -->
+						<form id="contact-form">
+    <div class="input-field wow animate__fadeIn" tabindex="1" data-wow-delay="0.3s">
+        <input name="Name" type="text" id="contact-name" maxlength="50" required>
+        <label for="contact-name">Name</label>
+    </div>
 
-	<div class="input-field wow animate__fadeIn" tabindex="1" data-wow-delay="0.3s">
-		<input name="Name" type="text" id="contact-name" maxlength="50" required>
-		<label for="contact-name">Name</label>
-	</div>
+    <div class="input-field wow animate__fadeIn" tabindex="1" data-wow-delay="0.5s">
+        <input name="E-mail" type="email" id="contact-email" maxlength="50" required>
+        <label for="contact-email">E-mail</label>
+    </div>
 
-	<div class="input-field wow animate__fadeIn" tabindex="1" data-wow-delay="0.5s">
-		<input name="E-mail" type="email" id="contact-email" maxlength="50" required>
-		<label for="contact-email">E-mail</label>
-	</div>
+    <div class="input-field wow animate__fadeIn" tabindex="1" data-wow-delay="0.5s">
+        <input name="Phone" type="text" id="contact-phone" autocomplete="tel" required>
+        <label for="contact-phone">Phone</label>
+    </div>
 
-	<div class="input-field wow animate__fadeIn" tabindex="1" data-wow-delay="0.5s">
-		<input name="Phone" type="text" id="contact-phone" autocomplete="tel" required>
-		<label for="contact-phone">Phone</label>
-	</div>
+    <div class="input-field wow animate__fadeIn" tabindex="1" data-wow-delay="0.7s">
+        <textarea name="Message" id="contact-message" cols="30" rows="7" required></textarea>
+        <label for="contact-message">Message</label>
+    </div>
 
-	<div class="input-field wow animate__fadeIn" tabindex="1" data-wow-delay="0.7s">
-		<textarea name="Message" id="contact-message" cols="30" rows="7" required></textarea>
-		<label for="contact-message">Message</label>
-	</div>
-
-	<div class="button-field wow animate__fadeInUp" data-wow-delay="0.9s">
-		<button type="submit">Send</button>
-	</div>
-
-	<div id="form-status" class="wow animate__fadeInUp" data-wow-delay="1.1s" style="margin-top: 1rem;"></div>
+    <div class="button-field wow animate__fadeInUp" data-wow-delay="0.9s">
+        <button type="submit">Send</button>
+    </div>
 </form>
 
 <!-- 						formulaire ajoute  -->
