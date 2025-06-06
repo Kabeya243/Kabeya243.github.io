@@ -1,60 +1,50 @@
 <?php
 
-$method = $_SERVER['REQUEST_METHOD'];
-$message = '';
-$c = true;
+// Adresse email destinataire fixe
+$admin_email = 'studio@kabeyailunga.com';
 
-if ($method === 'POST') {
-    $data = $_POST;
-} elseif ($method === 'GET') {
-    $data = $_GET;
-} else {
-    exit("Invalid request method.");
-}
+// Si le formulaire a été soumis en POST
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Nettoyage des données
+    $name    = trim($_POST['Name'] ?? '');
+    $email   = trim($_POST['E-mail'] ?? '');
+    $phone   = trim($_POST['Phone'] ?? '');
+    $message_content = trim($_POST['Message'] ?? '');
 
-// Nettoyage et récupération des champs principaux
-$project_name  = trim($data["project_name"] ?? '');
-$admin_email   = trim($data["admin_email"] ?? '');
-$email_from    = trim($data["email_from"] ?? '');
-$form_subject  = trim($data["form_subject"] ?? '');
-$client_email  = trim($data["E-mail"] ?? '');
+    // Sujet de l’email
+    $subject = "New message from kabeyailunga.com";
 
-// Validation email du client
-if (!filter_var($client_email, FILTER_VALIDATE_EMAIL)) {
-    exit("Invalid client email address.");
-}
-
-// Construction du message HTML
-foreach ($data as $key => $value) {
-    if (
-        $value !== '' &&
-        !in_array($key, ["project_name", "admin_email", "email_from", "form_subject", "E-mail"])
-    ) {
-        $value = htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
-        $key = htmlspecialchars($key, ENT_QUOTES, 'UTF-8');
-        $row_color = ($c = !$c) ? '' : ' style="background-color: #f8f8f8;"';
-
-        $message .= "
-        <tr{$row_color}>
-            <td style='padding: 10px; border: #e9e9e9 1px solid;'><b>$key</b></td>
-            <td style='padding: 10px; border: #e9e9e9 1px solid;'>$value</td>
+    // Construction du message HTML
+    $message = "
+    <table style='width: 100%; border-collapse: collapse;'>
+        <tr style='background-color: #f8f8f8;'>
+            <td style='padding: 10px; border: 1px solid #e9e9e9;'><b>Name</b></td>
+            <td style='padding: 10px; border: 1px solid #e9e9e9;'>$name</td>
         </tr>
-        ";
-    }
+        <tr>
+            <td style='padding: 10px; border: 1px solid #e9e9e9;'><b>Email</b></td>
+            <td style='padding: 10px; border: 1px solid #e9e9e9;'>$email</td>
+        </tr>
+        <tr style='background-color: #f8f8f8;'>
+            <td style='padding: 10px; border: 1px solid #e9e9e9;'><b>Phone</b></td>
+            <td style='padding: 10px; border: 1px solid #e9e9e9;'>$phone</td>
+        </tr>
+        <tr>
+            <td style='padding: 10px; border: 1px solid #e9e9e9;'><b>Message</b></td>
+            <td style='padding: 10px; border: 1px solid #e9e9e9;'>$message_content</td>
+        </tr>
+    </table>
+    ";
+
+    // Encodage UTF-8 du sujet
+    $encoded_subject = '=?UTF-8?B?' . base64_encode($subject) . '?=';
+
+    // Entêtes de l’email
+    $headers = "MIME-Version: 1.0\r\n";
+    $headers .= "Content-type: text/html; charset=UTF-8\r\n";
+    $headers .= "From: $name <$email>\r\n";
+    $headers .= "Reply-To: $email\r\n";
+
+    // Envoi de l’email
+    mail($admin_email, $encoded_subject, $message, $headers);
 }
-
-$message = "<table style='width: 100%; border-collapse: collapse;'>$message</table>";
-
-// Encodage UTF-8 du sujet et de l’expéditeur
-function adopt($text) {
-    return '=?UTF-8?B?' . base64_encode($text) . '?=';
-}
-
-// En-têtes de l’email
-$headers = "MIME-Version: 1.0" . PHP_EOL .
-           "Content-Type: text/html; charset=utf-8" . PHP_EOL .
-           'From: ' . adopt($project_name) . " <{$email_from}>" . PHP_EOL .
-           "Reply-To: {$client_email}" . PHP_EOL;
-
-// Envoi de l’email
-mail($admin_email, adopt($form_subject), $message, $headers);
