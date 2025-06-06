@@ -9,37 +9,38 @@ $(document).ready(function() {
 		$('.prelodaer-wrap').fadeOut('slow');
 	}, 4500);
 
-	//Ajax Form Send START
-	$('#contact-form').on('submit', function() { 
-		var th = $(this);
-		$.ajax({
-			type: 'POST',
-			url: 'mail.php',
-			data: th.serialize(),
-			success: function() {
-				th.trigger('reset');
-				$('.input-field').removeClass('is-active');
-				$.magnificPopup.open({
-					items: {
-						src: '<div class="form-alert"><p>Your application has been successfully sent. <br> Expect a call!</p></div>',
-						type: 'inline'
-					}
-				});
-			},
-			error: function() {
-				th.trigger('reset');
-				$('.input-field').removeClass('is-active');
-				$.magnificPopup.open({
-					items: {
-						src: '<div class="form-alert"><p>An error occurred, please try again</p></div>',
-						type: 'inline'
-					}
-				});
-			}
-		});
-		return false;
+//Ajax Form Send START
+$('#contact-form').on('submit', function () {
+	var th = $(this);
+	$.ajax({
+		type: 'POST',
+		url: 'mail.php',
+		data: th.serialize(),
+		success: function () {
+			th.trigger('reset');
+			$('.input-field').removeClass('is-active');
+			$.magnificPopup.open({
+				items: {
+					src: '<div class="form-alert"><p>Your application has been successfully sent. <br> Expect a call!</p></div>',
+					type: 'inline'
+				}
+			});
+		},
+		error: function () {
+			th.trigger('reset');
+			$('.input-field').removeClass('is-active');
+			$.magnificPopup.open({
+				items: {
+					src: '<div class="form-alert"><p>An error occurred, please try again</p></div>',
+					type: 'inline'
+				}
+			});
+		}
 	});
-	//Ajax Form Send END
+	return false;
+});
+//Ajax Form Send END
+
 
 	// Banner START
 	const swiperBanner = new Swiper('.swiper-banner', {
