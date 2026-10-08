@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Artwork details | Kabeya Ilunga</title>
+  <meta id="work-detail-meta" name="description" content="Discover an artwork by Kabeya Ilunga.">
+  <meta name="author" content="Kabeya Ilunga">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://www.kabeyailunga.com/work.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Fraunces:ital,opsz,wght@1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&family=Italianno&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<nav>
+  <a class="brand" href="index.html">Kabeya <span>Ilunga</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html#works">Works</a></li>
+    <li><a href="index.html#series">Series</a></li>
+    <li><a href="index.html#journey">Journey</a></li>
+    <li><a href="soloshow.html">Solo Show</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <button class="burger" id="burger" aria-label="Menu" aria-controls="navLinks" aria-expanded="false"><i class="bx bx-menu" aria-hidden="true"></i></button>
+</nav>
+
+<main>
+  <section class="work-detail-page" id="work-detail">
+    <div class="wrap">
+      <a class="work-back" href="index.html#works"><span aria-hidden="true">←</span> Back to selected works</a>
+      <div class="work-detail-layout" id="work-detail-content" hidden>
+        <figure class="work-detail-image">
+          <img id="work-detail-image" src="" alt="">
+        </figure>
+        <div class="work-detail-info">
+          <p class="kicker">Artwork details</p>
+          <h1 id="work-detail-title"></h1>
+          <dl class="work-specs">
+            <dt>Series</dt><dd id="work-detail-series"></dd>
+            <dt>Medium</dt><dd id="work-detail-medium"></dd>
+            <dt>Size</dt><dd id="work-detail-size"></dd>
+            <dt>Year</dt><dd id="work-detail-year"></dd>
+            <dt>Availability</dt><dd id="work-detail-availability"></dd>
+          </dl>
+          <p class="work-detail-note">For availability and acquisition enquiries, please contact the studio.</p>
+          <a class="btn solid" id="work-detail-enquire" href="contact.html">Enquire about this work</a>
+        </div>
+      </div>
+      <div class="work-not-found" id="work-not-found" hidden>
+        <p class="kicker">Artwork not found</p>
+        <h1>This work is not available.</h1>
+        <p>Please return to the selected works and choose an artwork to view its details.</p>
+        <a class="btn ghost" href="index.html#works">Browse selected works</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <a class="brand" href="index.html">Kabeya <span>Ilunga</span></a>
+      <div class="socials">
+        <a href="https://www.instagram.com/kabeya_ilunga/" aria-label="Instagram"><i class="bx bxl-instagram" aria-hidden="true"></i></a>
+        <a href="https://wa.me/243975072724" aria-label="WhatsApp"><i class="bx bxl-whatsapp" aria-hidden="true"></i></a>
+        <a href="https://www.linkedin.com/in/kabeya-ilunga/" aria-label="LinkedIn"><i class="bx bxl-linkedin" aria-hidden="true"></i></a>
+      </div>
+    </div>
+    <p class="copy">© 2026 Kabeya Ilunga, Kampala, Uganda. All works © the artist.</p>
+  </div>
+</footer>
+<script src="js/main.js"></script>
+</body>
+</html>

@@ -24,20 +24,14 @@ function renderGrid(){
   visibleWorks.forEach((w, i) => {
     const el = document.createElement('article');
     el.className = 'card rv in';
-    el.tabIndex = 0;
-    el.setAttribute('role', 'button');
-    el.setAttribute('aria-label', 'View ' + w.title + (w.sold ? ', sold' : ''));
     el.innerHTML =
       '<span class="tag">' + w.series + '</span>' +
-      '<div class="ph"><img loading="lazy" src="images/works/' + w.file + '" alt="' + w.title + ', Kabeya Ilunga"></div>' +
-      '<div class="cap"><h3>' + w.title + '</h3><p>' + w.year + ' · ' + w.size + '</p>' + (w.sold ? '<p class="sold-status">SOLD</p>' : '') + '</div>';
-    el.addEventListener('click', () => openLB(i, el));
-    el.addEventListener('keydown', event => {
-      if(event.key === 'Enter' || event.key === ' '){
-        event.preventDefault();
-        openLB(i, el);
-      }
-    });
+      '<button class="card-preview" type="button" aria-label="View ' + w.title + ' large">' +
+        '<div class="ph"><img loading="lazy" src="images/works/' + w.file + '" alt="' + w.title + ', Kabeya Ilunga"></div>' +
+        '<span class="cap"><span class="card-title">' + w.title + '</span><span class="card-caption">' + w.year + ' · ' + w.size + '</span>' + (w.sold ? '<span class="sold-status">SOLD</span>' : '') + '</span>' +
+      '</button>' +
+      '<a class="card-detail" href="work.html?work=' + encodeURIComponent(w.file) + '">' + w.title + ' · View details <span aria-hidden="true">→</span></a>';
+    el.querySelector('.card-preview').addEventListener('click', event => openLB(i, event.currentTarget));
     grid.appendChild(el);
   });
 }
@@ -162,6 +156,31 @@ if(finePointer.matches && !reducedMotionPreference.matches){
 
 /* ---------- init ---------- */
 renderGrid();
+
+/* ---------- artwork detail page ---------- */
+const workDetail = document.getElementById('work-detail');
+if(workDetail){
+  const file = new URLSearchParams(window.location.search).get('work');
+  const work = WORKS.find(item => item.file === file);
+  const notFound = document.getElementById('work-not-found');
+
+  if(work){
+    document.title = work.title + ' | Kabeya Ilunga';
+    document.getElementById('work-detail-image').src = 'images/works/' + work.file;
+    document.getElementById('work-detail-image').alt = work.title + ', artwork by Kabeya Ilunga';
+    document.getElementById('work-detail-title').textContent = work.title;
+    document.getElementById('work-detail-series').textContent = work.series;
+    document.getElementById('work-detail-medium').textContent = work.medium;
+    document.getElementById('work-detail-size').textContent = work.size;
+    document.getElementById('work-detail-year').textContent = work.year;
+    document.getElementById('work-detail-availability').textContent = work.sold ? 'Sold' : 'Please enquire';
+    document.getElementById('work-detail-enquire').href = 'contact.html?work=' + encodeURIComponent(work.title);
+    document.getElementById('work-detail-content').hidden = false;
+    document.getElementById('work-detail-meta').content = work.title + ', ' + work.series + ' by Kabeya Ilunga.';
+  }else{
+    notFound.hidden = false;
+  }
+}
 
 /* ---------- contact form ---------- */
 const contactForm = document.getElementById('contact-form');
