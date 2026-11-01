@@ -1647,3 +1647,46 @@ a {
 
 }
 /* Responsive END */
+
+/* Minimal, neutral palette */
+:root {
+  --color-def: #f7f7f5;
+  --color-1: #eeeeeb;
+  --color-2: #eeeeeb;
+  --color-3: #e3e3df;
+  --color-4: #e3e3df;
+  --color-contact: #686863;
+  --font-color: #242422;
+}
+body {
+  background-color: var(--color-def);
+  color: var(--font-color);
+}
+a { color: inherit; }
+.subtitle { color: #686863; }
+.album-desc { color: #686863; }
+.menu-overlay { background-color: rgba(36,36,34,.55); }
+.menu-nav,.menu-nav::before,.sidebar { background-color: var(--color-def); }
+.menu-nav ul a,.menu-nav .menu-contacts .menu-contacts__item,
+.menu-nav .menu-social a { color: var(--font-color); }
+.menu-nav .menu-social a:hover { color: #242422; border-color: #242422; }
+.sidebar .hamburger-button span { background-color: var(--font-color); }
+.grid-album .grid-item { box-shadow: 0 0 12px rgba(0,0,0,.08); }
+.album-tab a { border-color: rgba(36,36,34,.25); color: #686863; }
+.album-tab a:hover { background-color: #eeeeeb; color: #242422; }
+.album-tab a.is-active { background-color: #242422; color: #fff; }
+.site-footer { background-color: var(--color-1); filter: none; }
+.footer-copyright { color: #686863; }
+.album-tab a,.grid-album .grid-item,.menu-nav ul a,.menu-close,
+.link-portfolio,.sidebar .hamburger-button {
+  transition:color .2s ease,background-color .2s ease,border-color .2s ease,transform .2s ease,opacity .2s ease;
+}
+.album-tab a:focus-visible,.grid-album .grid-item a:focus-visible,
+.menu-nav a:focus-visible,.menu-close:focus-visible,
+.link-portfolio:focus-visible,.sidebar .hamburger-button:focus-visible {
+  outline:2px solid #686863;
+  outline-offset:4px;
+}
+@media(hover:hover) and (pointer:fine) {
+  .grid-album .grid-item:hover { transform:translateY(-2px); }
+}
